@@ -20,7 +20,7 @@ def CommandParse(commandString: str):
 
 def main():
     # TODO: Uncomment the code below to pass the first stage
-    while true:    
+    while True:    
         command_input = input("$ ")
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
