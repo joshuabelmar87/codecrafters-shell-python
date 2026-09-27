@@ -6,8 +6,10 @@ commands = {"exit":"Exit the shell"}
 def exit():
     sys.exit()
 
+def echo(params : str):
+    print(f"\n{str}")
 
-def CommandParse(commandString: str):
+def CommandParse(commandStr: str):
     
     try:
         
