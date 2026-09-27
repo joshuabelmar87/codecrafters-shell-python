@@ -3,6 +3,10 @@ import subprocess
 
 commands = {"exit":"Exit the shell","echo":"Echo the args"}
 
+
+def type(param: str):
+    if param in commands:
+        print(f"{param} is a shell builtin")
 def exit():
     sys.exit()
 
