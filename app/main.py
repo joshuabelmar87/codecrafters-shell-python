@@ -17,7 +17,7 @@ def CommandParse(commandString: str):
         args = commandString[1:]
 
         if len(args) > 1:
-            args = " " +  " ".join(args)
+            args = " ".join(args)
     
     except:
         command = commandString[0]
@@ -28,7 +28,7 @@ def CommandParse(commandString: str):
 def main():
     while True:    
         command_input = input("$ ")
-        command_input = command_input.split("")
+        command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         match command.lower():
             
