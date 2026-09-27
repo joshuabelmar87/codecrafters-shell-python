@@ -7,8 +7,7 @@ def exit():
     sys.exit()
 
 def echo(params : str):
-    if len(params) == 1:
-        print(f"{params}")
+    print(f"{params}")
 
 def CommandParse(commandString: str):
     
