@@ -7,6 +7,8 @@ commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes
 def type(param: str):
     if param in commands:
         print(f"{param} is a shell builtin")
+    if param not in commands:
+        print(f"{param} not found")
 def exit():
     sys.exit()
 
