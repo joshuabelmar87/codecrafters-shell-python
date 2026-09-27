@@ -1,15 +1,18 @@
 import sys
 import subprocess
 
-commands = {"exit":"Exit the shell"}
+commands = {"exit":"Exit the shell","echo":"Echo the args"}
 
 def exit():
     sys.exit()
 
 def echo(params : str):
-    print(f"\n{str}")
+    if len(params) == 1:
+        print(f"{params[0]}")
+    else:
+        print(f"{" ".join(params)}")
 
-def CommandParse(commandStr: str):
+def CommandParse(commandString: str):
     
     try:
         
@@ -33,7 +36,7 @@ def main():
         match command.lower():
             
             case cmd  if cmd in commands.keys() and len(args) >= 1:
-                eval(f"{command}() {args}")
+                eval(f"{command}({args}) ")
 
             case cmd if cmd not in commands.keys():
                 print(f"{command}: command not found")
