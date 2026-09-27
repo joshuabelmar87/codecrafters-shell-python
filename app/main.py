@@ -1,7 +1,7 @@
 import sys
 import subprocess
 
-commands = {"exit":"Exit the shell","echo":"Echo the args"}
+commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command"}
 
 
 def type(param: str):
