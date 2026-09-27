@@ -8,9 +8,9 @@ def exit():
 
 def echo(params : str):
     if len(params) == 1:
-        print(f"{params[0]}")
+        print(f"{params}")
     else:
-        print(f"{" ".join(params)}")
+        print(f"{params}\n")
 
 def CommandParse(commandString: str):
     
@@ -36,7 +36,8 @@ def main():
         match command.lower():
             
             case cmd  if cmd in commands.keys() and len(args) >= 1:
-                eval(f"{command}({args}) ")
+                args = " ".join(args)
+                eval(f"{command}(\"{args}\") ")
 
             case cmd if cmd not in commands.keys():
                 print(f"{command}: command not found")
