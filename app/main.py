@@ -36,7 +36,7 @@ def main():
         match command.lower():
             
             case cmd  if cmd in commands.keys() and len(args) >= 1:
-                args = " ".join(args)
+                args = "".join(args)
                 eval(f"{command}(\"{args}\") ")
 
             case cmd if cmd not in commands.keys():
