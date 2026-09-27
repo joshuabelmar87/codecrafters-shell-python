@@ -1,6 +1,11 @@
 import sys
+import subprocess
 
-commands = []
+commands = {"exit":"Exit the shell"}
+
+def exit():
+    sys.exit()
+
 
 def CommandParse(commandString: str):
     
@@ -19,16 +24,20 @@ def CommandParse(commandString: str):
 
 
 def main():
-    # TODO: Uncomment the code below to pass the first stage
     while True:    
         command_input = input("$ ")
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
-        if command_input in commands and args:
-            eval(f"{command} {args}")
+        match command.lower():
+            
+            case cmd  if cmd in commands.keys() and len(args) >= 1:
+                eval(f"{command}() {args}")
 
-        else:
-            print(f"{command}: command not found")
+            case cmd if cmd not in commands.keys():
+                print(f"{command}: command not found")
+        
+            case cmd if cmd in commands.keys() and len(args) == 0:
+                eval(f"{command}()")
 
 
 if __name__ == "__main__":
