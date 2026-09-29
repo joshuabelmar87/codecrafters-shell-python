@@ -26,7 +26,7 @@ def type(param: str):
 
 def runExecutable(path :Path, args:list):
     
-    process = subprocess.Popen([f"{path} {args}")
+    process = subprocess.Popen([f"{path} {args}"])
     
 def exit():
     sys.exit()
