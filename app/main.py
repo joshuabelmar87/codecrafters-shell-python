@@ -19,7 +19,7 @@ def type(param: str):
             file_path = Path(directory) / param
             if file_path.is_file():
                 matches.append(str(file_path))
-            print(f"{param} is {matches[0]")
+            print(f"{param} is {matches[0]}")
 
 def exit():
     sys.exit()
