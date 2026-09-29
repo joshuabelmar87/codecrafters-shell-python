@@ -11,7 +11,7 @@ def type(param: str):
     if param in commands:
         print(f"{param} is a shell builtin")
     if param not in commands:
-        print(f"{param} not found")
+
     
         path = os.environ.get("PATH")
         dirs = path.split(os.pathsep)
@@ -19,8 +19,9 @@ def type(param: str):
         for d in path:
             if re.search(r"{param}", d):
                 print(f"{param} is {d}")
-
-
+                break
+        
+        print(f"{param} not found")
             
 
 def exit():
