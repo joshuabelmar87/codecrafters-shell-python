@@ -20,7 +20,8 @@ def type(param: str):
             if file_path.is_file() and  os.access(file_path,os.X_OK):
                 matches.append(str(file_path))
                 print(f"{param} is {file_path}")
-
+        if len(matches) == 0:
+            print(f"{param}: not found")
 def exit():
     sys.exit()
 
