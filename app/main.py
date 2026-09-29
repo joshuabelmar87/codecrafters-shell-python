@@ -16,7 +16,7 @@ def type(param: str):
         path_dirs = os.environ.get("PATH", "").split(os.pathsep)
         matches = []
         for directory in path_dirs:
-            file_path = Path(directory) / filename
+            file_path = Path(directory) / param
             if file_path.is_file():
                 matches.append(str(file_path))
             if file_path == directory:
