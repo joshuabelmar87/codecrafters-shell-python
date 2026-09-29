@@ -16,7 +16,7 @@ def type(param: str):
         path = os.environ.get("PATH")
         dirs = path.split(os.pathsep)
 
-        for d in path:
+        for d in dirs:
             if re.search(r"{param}", d):
                 print(f"{param} is {d}")
                 break
