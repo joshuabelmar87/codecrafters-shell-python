@@ -69,7 +69,7 @@ def main():
             case cmd if cmd  not in commands.keys():     
                 if len(args) >= 0:
                     
-                    process = subprocess.Popen({getFullPath})
+                    process = subprocess.Popen(getFullPath())
                 if len(args) >= 1:
 
                     process = subprocess.Popen({getFullPath},[{args[0:]}])
