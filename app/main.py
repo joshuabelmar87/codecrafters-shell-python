@@ -14,7 +14,7 @@ def getFullPath(fileName:str):
         file_path = Path(directory) / param
         if file_path.is_file() and  os.access(file_path,os.X_OK):
             matches.append(str(file_path))
-    return matches       
+    return matches[0]       
 
 def type(param: str):
     
