@@ -17,9 +17,9 @@ def type(param: str):
         matches = []
         for directory in path_dirs:
             file_path = Path(directory) / param
-            if file_path.is_file():
+            if file_path.is_file() and  os.access(file_path,os.X_OK):
                 matches.append(str(file_path))
-        print(f"{param} is {matches[0]}")
+                print(f"{param} is {file_path}")
 
 def exit():
     sys.exit()
