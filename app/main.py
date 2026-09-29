@@ -14,7 +14,7 @@ def type(param: str):
 
     
         path = os.environ.get("PATH")
-        dirs = path.split(os.pathsep)
+        dirs = [d for d in os.path.normpath(path).split(os.pathsep) if os.path.isdir(d)]
 
         for d in dirs:
             print(f"{d}")
