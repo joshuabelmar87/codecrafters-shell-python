@@ -2,6 +2,8 @@ import sys
 import subprocess
 import os
 import re
+from pathlib import Path
+
 
 commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command"}
 
@@ -11,19 +13,14 @@ def type(param: str):
     if param in commands:
         print(f"{param} is a shell builtin")
     if param not in commands:
-
-    
-        path = os.environ.get("PATH")
-        dirs = [d for d in os.path.normpath(path).split(os.pathsep) if os.path.isdir(d)]
-
-        for d in dirs:
-            print(f"{d}")
-            if re.search(r"{param}", d):
-                print(f"{param} is {d}")
-                break
-        
-        print(f"{param} not found")
-            
+        path_dirs = os.environ.get("PATH", "").split(os.pathsep)
+        matches = []
+        for directory in path_dirs:
+            file_path = Path(directory) / filename
+            if file_path.is_file():
+                matches.append(str(file_path))
+            if file_path == directory:
+                print(f"{param} is {file_path}")
 
 def exit():
     sys.exit()
