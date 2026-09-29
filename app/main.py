@@ -1,14 +1,28 @@
 import sys
 import subprocess
+import os
+import re
 
 commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command"}
 
 
 def type(param: str):
+    
     if param in commands:
         print(f"{param} is a shell builtin")
     if param not in commands:
         print(f"{param} not found")
+    
+        path = os.environ.get("PATH")
+        dirs = path.split(os.pathsep)
+
+        for d in path:
+            if re.search(r"{param}"):
+                print(f"{param} is {d}")
+
+
+            
+
 def exit():
     sys.exit()
 
