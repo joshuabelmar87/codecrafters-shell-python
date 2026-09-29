@@ -57,12 +57,12 @@ def main():
         command,args = CommandParse(command_input)
         match command.lower():
             
+            case cmd if cmd not in commands.keys():
+                print(f"{command}: command not found")
+
             case cmd  if cmd in commands.keys() and len(args) >= 1:
                 args = "".join(args)
                 eval(f"{command}(\"{args}\") ")
-
-            case cmd if cmd not in commands.keys():
-                print(f"{command}: command not found")
         
             case cmd if cmd in commands.keys() and len(args) == 0:
                 eval(f"{command}()")
