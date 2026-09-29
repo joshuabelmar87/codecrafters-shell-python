@@ -61,7 +61,8 @@ def main():
             case cmd if cmd not in commands.keys():
                 if cmd[0:2] == "./":
                     process = subproces.Popen({cmd})
-                print(f"{command}: command not found")
+                else:
+                    print(f"{command}: command not found")
 
             case cmd  if cmd in commands.keys() and len(args) >= 1:
                 args = "".join(args)
