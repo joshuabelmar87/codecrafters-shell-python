@@ -17,7 +17,7 @@ def type(param: str):
         dirs = path.split(os.pathsep)
 
         for d in path:
-            if re.search(r"{param}"):
+            if re.search(r"{param}", d):
                 print(f"{param} is {d}")
 
 
