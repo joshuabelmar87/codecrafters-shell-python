@@ -59,7 +59,7 @@ def main():
         match command.lower():
                         
             case cmd if cmd not in commands.keys():
-                if cmd.beginswith("./"):
+                if cmd[0:2] == "./":
                     process = subproces.Popen({cmd})
                 print(f"{command}: command not found")
 
