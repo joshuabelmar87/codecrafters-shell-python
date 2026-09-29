@@ -66,7 +66,7 @@ def main():
         command,args = CommandParse(command_input)
         match command.lower():
                         
-            case cmd for cmd not in commands.keys():     
+            case cmd  not in commands.keys():     
                 if len(args) > 1:
 
                     process = subprocess.Popen({getFull},[{args[0:]}])
