@@ -11,7 +11,7 @@ def getFullPath(fileName:str):
     path_dirs = os.environ.get("PATH", "").split(os.pathsep)
     matches = []
     for directory in path_dirs:
-        file_path = Path(directory) / param
+        file_path = Path(directory) / fileName
         if file_path.is_file() and  os.access(file_path,os.X_OK):
             matches.append(str(file_path))
     return matches[0]       
