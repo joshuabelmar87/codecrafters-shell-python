@@ -22,6 +22,12 @@ def type(param: str):
                 print(f"{param} is {file_path}")
         if len(matches) == 0:
             print(f"{param}: not found")
+
+
+def runExecutable(path :Path, args:list):
+    
+    process = subprocess.Popen([f"{path} {args}")
+    
 def exit():
     sys.exit()
 
