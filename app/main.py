@@ -57,8 +57,10 @@ def main():
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         match command.lower():
-            
+                        
             case cmd if cmd not in commands.keys():
+                if cmd.beginswith("./"):
+                    process = subproces.Popen({cmd})
                 print(f"{command}: command not found")
 
             case cmd  if cmd in commands.keys() and len(args) >= 1:
