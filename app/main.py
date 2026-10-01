@@ -71,7 +71,8 @@ def main():
                     process = subprocess.Popen(getFullPath(cmd))
                 
                 if len(args) >= 1:
-                    process = subprocess.Popen(getFullPath(cmd),[args])
+                    process = subprocess.Popen([getFullPath(cmd),",".join(args))
+                    args = ",".join(args)
                 
                 else:
                     print(f"{command}: command not found")
