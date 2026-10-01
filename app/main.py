@@ -83,6 +83,7 @@ def main():
                         process.wait()
                     except:
                         process = subrpocess.Popen([getFullPath(cmd)]+args)
+                        process.wait()
                 else:
                     print(f"{command}: command not found")
 
