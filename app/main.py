@@ -71,7 +71,6 @@ def main():
                     process = subprocess.Popen(getFullPath(cmd))
                 
                 if len(args) >= 1:
-                    args = ",".join(args)
                     process = subprocess.Popen(getFullPath(cmd),[args])
                 
                 else:
