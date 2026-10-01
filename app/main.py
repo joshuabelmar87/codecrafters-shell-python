@@ -46,7 +46,7 @@ def echo(params : list):
     params = " ".join(params)
     print(f"{params}")
 
-def CommandParse(commandString: str):
+def CommandParse(commandString: list):
     args = []
     try:
         
