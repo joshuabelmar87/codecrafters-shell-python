@@ -21,7 +21,6 @@ def getFullPath(fileName:str):
         return []
 
 def type(param: str):
-    
     if param in commands:
         print(f"{param} is a shell builtin")
     if param not in commands:
@@ -35,10 +34,9 @@ def type(param: str):
         if len(matches) == 0:
             print(f"{param}: not found")
 
-
 def runExecutable(path :Path, args:list):
     
-    process = subprocess.Popen([f"{path}",[ "{args}"]])
+    process = subprocess.Popen([f"{path}", ["{args}"]])
 
     
 def exit():
@@ -68,12 +66,13 @@ def main():
         match command.lower():
 
             case cmd if cmd  not in commands.keys():     
+                
                 if len(args) == 0:
-                    
                     process = subprocess.Popen(getFullPath(cmd))
+                
                 if len(args) >= 1:
-
-                    process = subprocess.Popen(getFullPath(),[{args[0:]}])
+                    process = subprocess.Popen(getFullPath(cmd),[{args[0:]}])
+                
                 else:
                     print(f"{command}: command not found")
 
