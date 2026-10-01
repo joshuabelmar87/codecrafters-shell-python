@@ -68,10 +68,10 @@ def main():
             case cmd if cmd  not in commands.keys():     
                 
                 if len(args) == 0:
-                    process = subprocess.Popen(getFullPath(cmd))
+                    process = subprocess.Popen(cmd)
                     process.wait() 
                 if len(args) >= 1:
-                    process = subprocess.Popen([getFullPath(cmd)]+args)
+                    process = subprocess.Popen([cmd]+args)
                     process.wait()
                 else:
                     print(f"{command}: command not found")
