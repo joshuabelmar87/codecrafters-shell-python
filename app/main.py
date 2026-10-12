@@ -85,7 +85,7 @@ def main():
                         
                     except:
                         if os.access(cmd, os.X_OK):
-                            process = subrpocess.Popen([getFullPath(cmd)]+args)
+                            process = subprocess.Popen([getFullPath(cmd)]+args)
                             process.wait()
                         else:
                             print(f"{cmd}: command not found")
