@@ -64,7 +64,7 @@ def main():
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         
-        match command.lower():
+        match command:
 
             case cmd if cmd  not in commands.keys():     
                 if len(args) == 0:
