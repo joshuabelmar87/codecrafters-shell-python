@@ -5,7 +5,10 @@ import re
 from pathlib import Path
 
 
-commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command"}
+commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command","pwd":"Prints current working directory"}
+
+def pwd():
+    print(os.getcwd())
 
 def getFullPath(fileName:str):
     try:
