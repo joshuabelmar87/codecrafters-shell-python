@@ -77,15 +77,18 @@ def main():
                             process.wait()
                         except:
                             main()
-
+                            
                 if len(args) >= 1:
                     try:
-
                         process = subprocess.Popen([cmd]+args)
                         process.wait()
+                        
                     except:
-                        process = subrpocess.Popen([getFullPath(cmd)]+args)
-                        process.wait()
+                        if os.access(cmd, os.X_OK):
+                            process = subrpocess.Popen([getFullPath(cmd)]+args)
+                            process.wait()
+                        else:
+                            print(f"{cmd}: command not found")
                 else:
                     print(f"{command}: command not found")
 
