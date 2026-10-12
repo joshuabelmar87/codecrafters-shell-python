@@ -85,6 +85,7 @@ def main():
                             process.wait()
                         else:
                             process = subprocess.Popen([cmd]+args)
+                            process.wait()
                     except:
                         print(f"{cmd}: command not found")
                 else:
