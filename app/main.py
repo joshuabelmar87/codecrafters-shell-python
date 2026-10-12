@@ -76,6 +76,7 @@ def main():
                             process = subprocess.Popen(getFullPath(cmd))
                             process.wait()
                         except:
+                            print(f"{cmd}: command not found")
                             main()
                             
                 if len(args) >= 1:
