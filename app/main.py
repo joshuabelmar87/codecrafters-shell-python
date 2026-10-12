@@ -37,9 +37,8 @@ def type(param: str):
 
 
 def runExecutable(path :Path, args:list):
-    
-    process = subprocess.Popen([f"{path}",[ "{args}"]])
-
+    if os.access(file_path, os.X_OK):    
+        process = subprocess.Popen([f"{path}",[ "{args}"]])
     
 def exit():
     sys.exit()
@@ -73,8 +72,11 @@ def main():
                         process = subprocess.Popen(cmd)
                         process.wait()
                     except:
-                        process = subprocess.Popen(getFullPath(cmd))
-                        process.wait()
+                        try:
+                            process = subprocess.Popen(getFullPath(cmd))
+                            process.wait()
+                        except:
+                            main()
 
                 if len(args) >= 1:
                     try:
