@@ -69,7 +69,8 @@ def main():
     user = getpass.getuser()
     hostname = socket.gethostname()
     while True:    
-        command_input = input(f"{user}@{hostname}:{os.getcwd()}$ ")
+        #command_input = input(f"{user}@{hostname}:{os.getcwd()}$ ")
+        command_input = input(f"$ ")
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         
