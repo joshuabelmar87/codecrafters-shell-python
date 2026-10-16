@@ -3,9 +3,13 @@ import subprocess
 import os
 import re
 from pathlib import Path
+import socket
+import getpass
 
+commands = {"cd":"Changes current directory","exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command","pwd":"Prints current working directory"}
 
-commands = {"exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command","pwd":"Prints current working directory"}
+def cd(path = "~"):
+   os.chdir(os.path.expanduser(path)) 
 
 def pwd():
     print(os.getcwd())
@@ -62,8 +66,10 @@ def CommandParse(commandString: str):
     return command,args
 
 def main():
+    user = getpass.getuser()
+    hostname = socket.gethostname()
     while True:    
-        command_input = input("$ ")
+        command_input = input(f"{user}@{hostname}:{os.getcwd()}$ ")
         command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         
