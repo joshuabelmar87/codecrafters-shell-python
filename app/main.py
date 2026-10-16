@@ -9,8 +9,10 @@ import getpass
 commands = {"cd":"Changes current directory","exit":"Exit the shell","echo":"Echo the args","type":"Distinguishes type of command","pwd":"Prints current working directory"}
 
 def cd(path = "~"):
-   os.chdir(os.path.expanduser(path)) 
-
+    if os.direxists(os.path.expanduser(path)):
+        os.chdir(os.path.expanduser(path)) 
+    else:
+        print(f"cd: {path}: No such file or directory")
 def pwd():
     print(os.getcwd())
 
