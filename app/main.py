@@ -114,11 +114,11 @@ def CommandParse(commandString: str):
     #result = parse_command(commandString) 
     try:
         
-        command = result[0]
-        args = result[1:]
+        command = commandString[0]
+        args = commmandString[1:]
    
     except:
-        command = result[0]
+        command = commandString[0]
     return command,args
 
 def main():
