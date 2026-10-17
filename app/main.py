@@ -13,8 +13,61 @@ def cd(path = "~"):
         os.chdir(os.path.expanduser(path)) 
     else:
         print(f"cd: {path}: No such file or directory")
+def parse_command(input_line: str) -> list[str]:
+    """
+    Parse a shell command line using regex, handling single quotes correctly.
+
+    Rules:
+    - Characters inside single quotes (') are treated literally.
+    - Spaces inside quotes are preserved.
+    - Adjacent quoted/unquoted strings are concatenated.
+    - Quotes themselves are removed.
+    - Outside quotes, whitespace separates arguments.
+    """
+    # Match either:
+    #   1. A single-quoted string (content only, quotes discarded)
+    #   2. A sequence of non-whitespace, non-quote characters
+    token_re = re.compile(r"'([^']*)'|([^\s']+)")
+
+    matches = token_re.findall(input_line)
+
+    # findall returns tuples: (quoted_content, unquoted_content)
+    # One of them is always empty
+    tokens = [q if q else u for q, u in matches]
+
+    # Concatenate adjacent tokens that had no whitespace between them
+    # (the regex already splits on whitespace, so we just need to join
+    # consecutive matches that were next to each other without space)
+    # Because the regex consumes the input sequentially and whitespace
+    # is the only separator, the list already has correct argument boundaries.
+    # Adjacent quoted/unquoted pieces that touch (e.g. 'hello''world')
+    # appear as consecutive tokens with no space between them in the original,
+    # but findall still produces separate matches. We therefore merge them.
+
+    if not tokens:
+        return []
+
+    # Re-scan to merge adjacent tokens that were not separated by whitespace
+    result = []
+    last_end = 0
+    pos = 0
+
+    for match in token_re.finditer(input_line):
+        start, end = match.span()
+        content = match.group(1) if match.group(1) is not None else match.group(2)
+
+        # If there was only whitespace (or nothing) between previous token and this one,
+        # and the previous result exists, we may need to concatenate
+        if result and start == last_end:
+            result[-1] += content
+        else:
+            result.append(content)
+
+        last_end = end
+    return result
 def pwd():
     print(os.getcwd())
+
 
 def getFullPath(fileName:str):
     try:
