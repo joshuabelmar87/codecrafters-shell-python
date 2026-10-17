@@ -127,7 +127,7 @@ def main():
     while True:    
         #command_input = input(f"{user}@{hostname}:{os.getcwd()}$ ")
         command_input = input(f"$ ")
-        command_input = command_input.split(" ")
+        #command_input = command_input.split(" ")
         command,args = CommandParse(command_input)
         
         match command:
