@@ -111,7 +111,7 @@ def echo(params : list):
 
 def CommandParse(commandString: str):
     args = []
-    result = pare_command(commandString) 
+    result = parse_command(commandString) 
     try:
         
         command = result[0]
