@@ -64,7 +64,7 @@ def parse_command(input_line: str) -> list[str]:
             result.append(content)
 
         last_end = end
-    return result
+
 def pwd():
     print(os.getcwd())
 
@@ -111,13 +111,14 @@ def echo(params : list):
 
 def CommandParse(commandString: str):
     args = []
+    result = pare_command(commandString) 
     try:
         
-        command = commandString[0]
-        args = commandString[1:]
+        command = result[0]
+        args = result[1:]
    
     except:
-        command = commandString[0]
+        command = result[0]
     return command,args
 
 def main():
